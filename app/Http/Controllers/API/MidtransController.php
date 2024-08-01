@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Midtrans\Config;
 use Midtrans\Snap;
 use Midtrans\Notification;
@@ -27,14 +28,13 @@ class MidtransController extends Controller
         $notification = new Notification();
 
         // Assign ke variable untuk memudahkan coding
-        $status = $notification->subscription_status;
+        $status = $notification->transaction_status;
         $type = $notification->payment_type;
         $fraud = $notification->fraud_status;
         $order_id = $notification->order_id;
 
         // Cari transaksi berdasarkan ID
         $subscription = Subscription::findOrFail($order_id);
-
         // Handle notification status midtrans
         if ($status == 'capture') {
             if ($type == 'credit_card'){
