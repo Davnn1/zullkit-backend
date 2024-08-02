@@ -24,12 +24,12 @@ class ProductController extends Controller
             return DataTables::of($query)
                 ->addColumn('action', function ($item) {
                     return '
-                        <a class="inline-block px-2 py-1 m-1 text-white transition duration-500 bg-blue-700 border border-blue-700 rounded-md select-none ease hover:bg-blue-800 focus:outline-none focus:shadow-outline" 
+                        <a class="inline-block px-2 py-1 m-1 text-white transition duration-500 bg-blue-700 border border-blue-700 rounded-md select-none ease hover:bg-blue-800 focus:outline-none focus:shadow-outline"
                             href="' . route('dashboard.product.gallery.index', $item->id) . '">
                             Gallery
                         </a>
-                        
-                        <a class="inline-block px-2 py-1 m-1 text-white transition duration-500 bg-gray-700 border border-gray-700 rounded-md select-none ease hover:bg-gray-800 focus:outline-none focus:shadow-outline" 
+
+                        <a class="inline-block px-2 py-1 m-1 text-white transition duration-500 bg-gray-700 border border-gray-700 rounded-md select-none ease hover:bg-gray-800 focus:outline-none focus:shadow-outline"
                             href="' . route('dashboard.product.edit', $item->id) . '">
                             Edit
                         </a>
@@ -78,7 +78,7 @@ class ProductController extends Controller
 
         if($request->hasFile('thumbnails'))
         {
-            $path = $request->file('thumbnails')->store('public/gallery');
+            $path = $request->file('thumbnails')->storePublicly('public/gallery');
             $data['thumbnails'] = $path;
         }
 
@@ -126,7 +126,7 @@ class ProductController extends Controller
 
         if($request->hasFile('thumbnails'))
         {
-            $path = $request->file('thumbnails')->store('public/gallery');
+            $path = $request->file('thumbnails')->storePublicly('public/gallery');
             $data['thumbnails'] = $path;
         }
 

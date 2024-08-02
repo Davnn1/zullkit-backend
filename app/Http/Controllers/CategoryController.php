@@ -71,7 +71,7 @@ class CategoryController extends Controller
 
         if($request->hasFile('thumbnails'))
         {
-            $path = $request->file('thumbnails')->store('public/gallery');
+            $path = $request->file('thumbnails')->storePublicly('public/gallery');
             $data['thumbnails'] = $path;
 
         }

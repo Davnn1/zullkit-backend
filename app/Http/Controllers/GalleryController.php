@@ -43,7 +43,7 @@ class GalleryController extends Controller
 
         return view('pages.dashboard.gallery.index', compact('product'));
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -67,7 +67,7 @@ class GalleryController extends Controller
         if($request->hasFile('files'))
         {
             foreach ($files as $file) {
-                $path = $file->store('public/gallery');
+                $path = $file->storePublicly('public/gallery');
 
                 Gallery::create([
                     'products_id' => $product->id,
