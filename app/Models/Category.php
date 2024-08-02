@@ -11,10 +11,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Category extends Model
 {
     use HasFactory, SoftDeletes;
-    
+
     protected $fillable = [
         'name', 'thumbnails'
-    ];    
+    ];
 
     public function products()
     {
@@ -23,6 +23,6 @@ class Category extends Model
 
     public function getThumbnailsAttribute($thumbnails)
     {
-        return config('app.url') . Storage::url($thumbnails);
+        return Storage::url($thumbnails);
     }
 }

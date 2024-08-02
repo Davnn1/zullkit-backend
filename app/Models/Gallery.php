@@ -15,9 +15,9 @@ class Gallery extends Model
         'products_id', 'url', 'is_featured'
     ];
 
-    
+
     public function getUrlAttribute($url)
     {
-        return config('app.url') . Storage::url($url);
+        return Storage::url($url);
     }
 }
